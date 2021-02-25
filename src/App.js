@@ -1,13 +1,13 @@
 import './App.css';
-import MainSearch from './components/MainSearch';
 import NavBar from './components/NavBar';
 import { Footer } from './components/Footer';
+import { Home } from './components/Home';
 
 function App() {
   return (
     <>
       <NavBar />
-      <MainSearch />
+      <Home />
       <Footer/>      
     </>
   );
