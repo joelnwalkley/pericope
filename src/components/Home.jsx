@@ -22,6 +22,7 @@ export const Home = () => {
   };
 
   return (
+    <>
     <Container className='hero' textAlign='center'>
       <Header as='h1'>A Collection of Links for Your Sermon Prep</Header>
       <Input
@@ -39,5 +40,6 @@ export const Home = () => {
         </Card.Group>
       </Container>
     </Container>
+    </>
   );
 };
