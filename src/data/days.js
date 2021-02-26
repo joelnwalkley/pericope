@@ -80,6 +80,21 @@ const days = [
     color: 'yellow',
   },
   {
+    name: 'Day of Pentecost',
+    id: 'pentecostb',
+    texts: [
+      'Acts 2:1-21',
+      'Ezek 37:1-14',
+      'Ps 104:24-34, 35b',
+      'Rom 8:22-27',
+      'John 15:26-27; 16:4b-15',
+    ],
+    year: 'B',
+    num: 0,
+    season: 'pentecost',
+    color: 'red',
+  },
+  {
     name: 'Second Sunday after Pentecost',
     id: 'proper5b',
     texts: [
