@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import NavBar from './components/NavBar';
@@ -12,9 +12,11 @@ function App() {
     <>
       <Router>
         <NavBar />
-        <Container className="hero">
-        <Route path='/' exact component={Home} />
-        <Route path='/day/:id' component={DayLinks} />
+        <Container className='hero'>
+          <Switch>
+            <Route path='/day/:id' component={DayLinks} />
+            <Route path='/' component={Home} />
+          </Switch>
         </Container>
       </Router>
       <Footer />
