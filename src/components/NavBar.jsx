@@ -3,7 +3,7 @@ import { Button, Icon, Menu } from 'semantic-ui-react';
 
 const NavBar = () => {
   return (
-    <Menu secondary size='massive'>
+    <Menu stackable secondary size='massive'>
       <Menu.Item>
         <Icon name='linkify' color='teal' />
         Sermon Links
