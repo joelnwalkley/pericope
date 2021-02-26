@@ -1,13 +1,13 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Card, Icon, Image, Label } from 'semantic-ui-react';
 
-export const DayCard = ({ day: { name, year, texts, color = 'teal' } }) => {
+export const DayCard = ({ day: { id, name, year, texts, color = 'teal' } }) => {
   return (
     <Card
       color={color}
-      onClick={() => {
-        console.log('CLICK!');
-      }}
+      as={Link}
+      to={'/day/'+id}
     >
       <Image />
       <Card.Content>
