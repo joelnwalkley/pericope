@@ -1,10 +1,10 @@
-import React from 'react';
+import {Link} from 'react-router-dom';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 
 const NavBar = () => {
   return (
     <Menu stackable secondary size='massive'>
-      <Menu.Item>
+      <Menu.Item as={Link} to='/'>
         <Icon name='linkify' color='teal' />
         Sermon Links
       </Menu.Item>

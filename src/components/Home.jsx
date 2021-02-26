@@ -23,7 +23,7 @@ export const Home = () => {
 
   return (
     <>
-    <Container className='hero' textAlign='center'>
+    <Container textAlign='center'>
       <Header as='h1'>A Collection of Links for Your Sermon Prep</Header>
       <Input
         fluid
