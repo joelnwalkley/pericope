@@ -1,7 +1,10 @@
+//Rarely changes, likely will maintain here rather than a db
+
 const days = [
   {
     name: 'First Sunday of Advent',
     id: 'advent1b',
+    texts: ['Isa 64:1-9', 'Ps 80:1-7, 17-19', '1 Cor 1:3-9', 'Mark 13:24-37'],
     year: 'B',
     num: 1,
     season: 'advent',
@@ -10,6 +13,7 @@ const days = [
   {
     name: 'Second Sunday of Advent',
     id: 'advent2b',
+    texts: ['Isa 40:1-11', 'Ps 85:1-2, 8-13', '2 Pet 3:8-15a', 'Mark 1:1-8'],
     year: 'B',
     num: 2,
     season: 'advent',
@@ -18,6 +22,7 @@ const days = [
   {
     name: 'Nativity of the Lord - Proper I',
     id: 'christmas1p',
+    texts: ['Isa 9:2-7', 'Ps 96', 'Titus 2:11-14', 'Luke 2:1-14, (15-20)'],
     year: 'B',
     num: 0,
     season: 'christmas',
@@ -26,6 +31,7 @@ const days = [
   {
     name: 'Epiphany of the Lord',
     id: 'epiphany',
+    texts: ['Isa 60:1-6', 'Ps 72:1-7, 10-14', 'Eph 3:1-12', 'Matt 2:1-12'],
     year: 'B',
     num: 0,
     season: 'epiphany',
@@ -34,6 +40,7 @@ const days = [
   {
     name: 'First Sunday in Lent',
     id: 'lent1b',
+    texts: ['Gen 9:8-17', 'Ps 25:1-10', '1 Pet 3:18-22', 'Mark 1:9-15'],
     year: 'B',
     num: 1,
     season: 'lent',
@@ -42,6 +49,13 @@ const days = [
   {
     name: 'Second Sunday in Lent',
     id: 'lent2b',
+    texts: [
+      'Gen 17:1-7, 15-16',
+      'Ps 22:23-31',
+      'Rom 4:13-25',
+      'Mark 8:31-38',
+      'Mark 9:2-9',
+    ],
     year: 'B',
     num: 2,
     season: 'lent',
@@ -50,6 +64,7 @@ const days = [
   {
     name: 'Second Sunday of Easter',
     id: 'easter2b',
+    texts: ['Acts 4:32-35', 'Ps 133', '1 John 1:1-2:2', 'John 20:19-31'],
     year: 'B',
     num: 2,
     season: 'easter',
@@ -58,6 +73,7 @@ const days = [
   {
     name: 'Trinity Sunday',
     id: 'trinityb',
+    texts: ['Isa 6:1-8', 'Ps 29', 'Rom 8:12-17', 'John 3:1-17'],
     year: 'B',
     num: 0,
     season: 'ordinary',
@@ -66,6 +82,14 @@ const days = [
   {
     name: 'Second Sunday after Pentecost',
     id: 'proper5b',
+    texts: [
+      '1 Sam 8:4-11, (12-15), 16-20, (11:14-15)',
+      'Ps 138',
+      'Gen 3:8-15',
+      'Ps 130',
+      '2 Cor 4:13-5:1',
+      'Mark 3:20-35',
+    ],
     year: 'B',
     num: 5,
     season: 'ordinary',
