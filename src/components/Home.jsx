@@ -33,7 +33,7 @@ export const Home = () => {
         onKeyUp={filterDays}
       />
       <Container className='hero'>
-        <Card.Group itemsPerRow={5}>
+        <Card.Group centered>
           {showDays.map((day, index) => (
             <DayCard key={index} day={day} />
           ))}
