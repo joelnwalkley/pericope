@@ -1,4 +1,5 @@
 //Rarely changes, likely will maintain here rather than a db
+//TODO: add alternate names or additional search to handle when Propers are also called Ordinary
 
 const days = [
   {
