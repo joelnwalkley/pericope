@@ -5,11 +5,11 @@ export const Links = () => {
     <Item>
       <Item.Image as='div'>
         <Button as='div' labelPosition='right'>
-          <Button color='red'>
-            <Icon name='heart' />
-            Liked
+          <Button color='teal'>
+            <Icon name='arrow alternate circle up' />
+            Votes
           </Button>
-          <Label as='a' basic color='red' pointing='left'>
+          <Label as='a' basic color='teal' pointing='left'>
             2,048
           </Label>
         </Button>
