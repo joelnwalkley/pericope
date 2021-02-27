@@ -10,9 +10,9 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-import { Links } from './Links';
+import { LinkItem } from './LinkItem';
 
-const links = ['1', '2', '3', '4', '5'];
+import { links } from '../data/links';
 
 export const DayLinks = () => {
   const { id } = useParams();
@@ -25,23 +25,26 @@ export const DayLinks = () => {
           <Message info>
             <Message.Header>Show Only...</Message.Header>
             <br />
-            <Checkbox label='Filter One' toggle />
+            <Checkbox label='Filter One'/>
+            <br />
+            <Checkbox label='Filter Two'/>
           </Message>
         </Grid.Column>
         <Grid.Column width={12}>
           <Header as='h2'>Top Links for {id}</Header>
           <Container>
             <Segment clearing>
-              <Header as='h3' floated='left'>Sort by...</Header>
+              <Header as='h3' floated='left'>
+                Sort by...
+              </Header>
               <Button floated='right'>Most Recent</Button>
               <Button floated='right'>Votes</Button>
-              </Segment>
-              <Item.Group divided>
-                {links.map((link, i) => (
-                  <Links key={i} link={link} />
-                ))}
-              </Item.Group>
-            
+            </Segment>
+            <Item.Group divided>
+              {links.map((link, i) => (
+                <LinkItem key={i} link={link} />
+              ))}
+            </Item.Group>
           </Container>
         </Grid.Column>
       </Grid>
