@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Card, Container, Header, Input } from 'semantic-ui-react';
 
 import { days } from '../data/days';
-import { DayCard } from './Days/DayCard';
+import { DayCard } from './DayCard';
 
 export const Home = () => {
   const [showDays, setShowDays] = useState([...days]);
