@@ -71,6 +71,17 @@ export const SubmitLink = () => {
               options={options} 
           />
           </Form.Field>
+          <Form.Field>
+              <label>Readings (Optional)</label>
+              <Dropdown
+              multiple
+              selection
+              fluid
+              search
+              placeholder="Examples: Gen 1:1-2:2, John 3:1-17"
+              options={options} 
+          />
+          </Form.Field>
           <Message positive>
           <Message.Header>Success</Message.Header>
           Thanks! Your submission has been received. It will appear in the search results after it is approved by a reviewer.
