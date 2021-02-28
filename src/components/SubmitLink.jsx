@@ -34,10 +34,11 @@ export const SubmitLink = () => {
   return (
     <Container className='hero'>
       <Header as='h1' textAlign='center'>
-        Submit New Sermon Link
+        Submit New Commentary Link
       </Header>
       {user.roles.submit ? (
         <Form
+        noValidate
           autoComplete='off'
           onSubmit={(e) => {
             e.preventDefault();
