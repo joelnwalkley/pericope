@@ -1,28 +1,20 @@
 import {useEffect, useState} from 'react';
 
+//example below from https://github.com/firebase/firebaseui-web-react
+
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase';
+import {firebaseConfig} from '../util/firebaseConfig';
 
 //import { Container, Header } from 'semantic-ui-react';
-
-// Configure Firebase.
-const config = {
-    apiKey: "AIzaSyCCFtP7muN7n2YqVVNfijBoGCq2CTl2eHM",
-    authDomain: "sermonlinks-8a00d.firebaseapp.com",
-    projectId: "sermonlinks-8a00d",
-    storageBucket: "sermonlinks-8a00d.appspot.com",
-    messagingSenderId: "183044878425",
-    appId: "1:183044878425:web:daa4e49308647132ef8148",
-    measurementId: "G-S549E9GVEN"
-};
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 // Configure FirebaseUI.
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: 'popup',
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/signedIn',
+  signInSuccessUrl: '/',
   // We will display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
