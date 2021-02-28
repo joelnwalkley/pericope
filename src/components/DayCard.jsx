@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Card, Icon, Image, Label } from 'semantic-ui-react';
 
-export const DayCard = ({ day: { id, name, year, texts, color = 'teal' } }) => {
+export const DayCard = ({ day: { id, name, years, texts, color = 'teal' } }) => {
   return (
     <Card
       color={color}
@@ -12,7 +12,7 @@ export const DayCard = ({ day: { id, name, year, texts, color = 'teal' } }) => {
       <Image />
       <Card.Content>
         <Card.Header>{name}</Card.Header>
-        <Card.Meta>Year {year}</Card.Meta>
+        <Card.Meta>{`Year ${years}`}</Card.Meta>
         <Card.Description>
             {texts.map((text, i) => (
                 <Label key={i} color={color}>{text}</Label>
