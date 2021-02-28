@@ -7,6 +7,7 @@ import { Home } from './components/Home';
 import { DayLinks } from './components/DayLinks';
 import { Container } from 'semantic-ui-react';
 import { SubmitLink } from './components/SubmitLink';
+import { SignIn } from './components/SignIn';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path='/day/:id' component={DayLinks} />
             <Route path='/submit' component={SubmitLink} />
+            <Route path='/signin' component={SignIn}/>
             <Route path='/' component={Home} />
           </Switch>
         </Container>

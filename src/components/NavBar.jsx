@@ -20,7 +20,7 @@ const NavBar = () => {
           </Button>
         </Menu.Item>
         )}
-        <Menu.Item>
+        <Menu.Item as={Link} to='/signin'>
           <Button basic color='teal'>
             Sign Up / Sign In
           </Button>
