@@ -1,7 +1,7 @@
 import { Button, Icon, Item, Label } from 'semantic-ui-react';
 
 export const LinkItem = ({
-  link: { url, title, publisher, readings, votes = [] },
+  link: { url, title, publisher, texts, votes = [] },
 }) => {
   return (
     <Item>
@@ -22,8 +22,8 @@ export const LinkItem = ({
         <Item.Description>{publisher}</Item.Description>
         <Item.Meta>{url}</Item.Meta>
         <Item.Extra>
-          {readings.map((reading, i) => (
-            <Label key={i}>{reading}</Label>
+          {texts.map((text, i) => (
+            <Label key={i}>{text}</Label>
           ))}
         </Item.Extra>
       </Item.Content>
