@@ -2,7 +2,7 @@
   "name": "sermonlinks",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://joelnwalkley.github.io/sermonlinks/",
+  "homepage": "https://sermonlinks-8a00d.web.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
