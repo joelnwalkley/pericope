@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { FirebaseUser } from '../util/firebaseInit';
+import { FirebaseUser, auth, db } from '../util/firebaseInit';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -18,8 +18,6 @@ export const SignIn = () => {
     signInSuccessUrl: '/',
     callbacks: {
       signInSuccessWithAuthResult: () => {
-        const auth = firebase.auth();
-        const db = firebase.firestore();
         const { uid, displayName, email } = auth.currentUser;
 
         //create or update user doc
@@ -61,7 +59,7 @@ export const SignIn = () => {
         <p>Please sign-in:</p>
         <StyledFirebaseAuth
           uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
+          firebaseAuth={auth}
         />
       </div>
     );
@@ -70,7 +68,7 @@ export const SignIn = () => {
     <div>
       <h1>My App</h1>
       <p>Welcome {user.displayName}! You are now signed-in!</p>
-      <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+      <button onClick={() => auth.signOut()}>Sign-out</button>
     </div>
   );
 };
