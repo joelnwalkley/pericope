@@ -1,52 +1,76 @@
-import {useEffect, useState} from 'react';
-
-//example below from https://github.com/firebase/firebaseui-web-react
+import { useContext } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import { FirebaseUser } from '../util/firebaseInit';
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase';
-import {firebaseConfig} from '../util/firebaseConfig';
-
-//import { Container, Header } from 'semantic-ui-react';
-firebase.initializeApp(firebaseConfig);
-
-// Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: 'popup',
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-  signInSuccessUrl: '/',
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-  ],
-};
 
 export const SignIn = () => {
-    const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+  const user = useContext(FirebaseUser);
 
-    // Listen to the Firebase Auth state and set the local state.
-    useEffect(() => {
-      const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
-        setIsSignedIn(!!user);
-      });
-      return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-    }, []);
-  
-    if (!isSignedIn) {
-      return (
-        <div>
-          <h1>My App</h1>
-          <p>Please sign-in:</p>
-          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-        </div>
-      );
-    }
+  const uiConfig = {
+    signInFlow: 'popup',
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    ],
+    signInSuccessUrl: '/',
+    callbacks: {
+      signInSuccessWithAuthResult: () => {
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const { uid, displayName, email } = auth.currentUser;
+
+        //create or update user doc
+        const userRef = db.collection('users').doc(auth.currentUser.uid);
+        userRef
+          .get()
+          .then((doc) => {
+            if (!doc.exists) {
+              //create new user with no roles
+              userRef.set({
+                joined: new Date(),
+                uid: uid,
+                displayName: displayName,
+                email: email,
+                roles: {
+                  submit: false,
+                  review: false,
+                },
+              });
+            } else {
+              //update any changes in displayName or email
+              userRef.update({
+                displayName: displayName,
+                email: email,
+              });
+            }
+          })
+          .catch((err) => {
+            console.log('Error', err);
+          });
+      },
+    },
+  };
+
+  if (!user) {
     return (
       <div>
         <h1>My App</h1>
-        <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-        <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+        <p>Please sign-in:</p>
+        <StyledFirebaseAuth
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
       </div>
     );
+  }
+  return (
+    <div>
+      <h1>My App</h1>
+      <p>Welcome {user.displayName}! You are now signed-in!</p>
+      <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
+    </div>
+  );
 };
