@@ -11,7 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 import { dayOptions, readingOptions } from '../data/days';
-import { validateLink, sanitizeURL } from '../util/validators';
+import { validateAllLinkFields, sanitizeURL, validateSingleLinkField } from '../util/validators';
 
 export const SubmitLink = () => {
   const user = useContext(FirebaseUser);
@@ -29,7 +29,7 @@ export const SubmitLink = () => {
     e.preventDefault();
     const { url, title, publisher, days, texts } = linkInfo;
     const sanitizedURL = sanitizeURL(url);
-    const submitErrors = await validateLink(linkInfo);
+    const submitErrors = await validateAllLinkFields(linkInfo);
 
     if (Object.keys(submitErrors).length > 0) {
       setFormErrors(submitErrors);
@@ -75,6 +75,14 @@ export const SubmitLink = () => {
       });
   };
 
+  const validateOnBlur = async (e, data) => {
+    const submitErrors = await validateSingleLinkField(e, data);
+    setFormErrors({
+      ...formErrors,
+      ...submitErrors
+    })
+  }
+
   return (
     <Container className='hero'>
       <Header as='h1' textAlign='center'>
@@ -99,6 +107,7 @@ export const SubmitLink = () => {
                 url: e.target.value,
               });
             }}
+            onBlur={validateOnBlur}
             placeholder='https://www.example.com'
             pattern='https://.*'
             required
@@ -128,6 +137,7 @@ export const SubmitLink = () => {
                 title: e.target.value,
               });
             }}
+            onBlur={validateOnBlur}
             placeholder='Example Commentary on Romans 8'
             required
             error={formErrors.title}
@@ -147,6 +157,7 @@ export const SubmitLink = () => {
                 publisher: e.target.value,
               });
             }}
+            onBlur={validateOnBlur}
             placeholder='Examples: Working Preacher, Pulpit Fiction'
             required
             error={formErrors.publisher}
@@ -154,7 +165,7 @@ export const SubmitLink = () => {
           <Form.Field required error={formErrors.days}>
             <label>Liturgical Day</label>
             <Dropdown
-              name='day'
+              name='days'
               value={linkInfo.days}
               onChange={(e, data) => {
                 setFormErrors({
@@ -166,6 +177,7 @@ export const SubmitLink = () => {
                   days: data.value,
                 });
               }}
+              onBlur={validateOnBlur}
               multiple
               selection
               fluid

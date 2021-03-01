@@ -12,7 +12,7 @@ const linkExists = async (url) => {
     return query.docs.length > 0;
 }
 
-const validateLink = async (linkInfo) => {
+const validateAllLinkFields = async (linkInfo) => {
     const {url, title, publisher, days = []} = linkInfo;
     
     let errors = {};
@@ -43,4 +43,22 @@ const validateLink = async (linkInfo) => {
     return errors;
 }
 
-export {validateLink, sanitizeURL};
+const validateSingleLinkField = async (e, data) => {
+    const {required, name, value} = e.target;
+    let errors = {};
+    if (required && value === ''){
+        errors[name] = true;
+    }
+    if (data?.name === 'days' && data?.value.length === 0){
+        errors.days = true;
+    }
+    if (name === 'url'){
+      if (await linkExists(value)){
+          errors.url = true;
+          errors.exists = true;
+      }
+    }
+    return errors;
+  }
+
+export {validateAllLinkFields, validateSingleLinkField, sanitizeURL, linkExists};
