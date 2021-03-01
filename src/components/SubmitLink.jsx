@@ -65,6 +65,7 @@ export const SubmitLink = () => {
         setSubmitMessage({
           type: 'success',
         });
+        clearForm();
       })
       .catch((err) => {
         console.log('ERROR: ', err);
@@ -81,6 +82,17 @@ export const SubmitLink = () => {
       ...formErrors,
       ...submitErrors
     })
+  }
+
+  const clearForm = () => {
+    setLinkInfo({
+      url: '',
+      title: '',
+      publisher: '',
+      days: [],
+      texts: [],
+    });
+    setFormErrors({});
   }
 
   return (
@@ -220,6 +232,7 @@ export const SubmitLink = () => {
                   reviewer.
                 </p>
               )}
+              <p>The form has been cleared. You may continue to add more links.</p>
             </Message>
           )}
           {submitMessage.type === 'error' && (
@@ -231,6 +244,9 @@ export const SubmitLink = () => {
 
           <Button color='teal' type='submit'>
             Submit
+          </Button>
+          <Button type='button' onClick={clearForm}>
+            Clear Form
           </Button>
         </Form>
       ) : (
