@@ -11,7 +11,7 @@ import {
 } from 'semantic-ui-react';
 
 import { dayOptions, readingOptions } from '../data/days';
-import { validateLink } from '../util/validators';
+import { validateLink, sanitizeURL } from '../util/validators';
 
 export const SubmitLink = () => {
   const user = useContext(FirebaseUser);
@@ -28,21 +28,24 @@ export const SubmitLink = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { url, title, publisher, days, texts } = linkInfo;
+    const sanitizedURL = sanitizeURL(url);
     const submitErrors = await validateLink(linkInfo);
-    console.log("submitErrors",submitErrors)
+
     if (Object.keys(submitErrors).length > 0) {
       setFormErrors(submitErrors);
       setSubmitMessage({
         type: 'error',
-        err: 'There is missing or invalid information on the form. Please check your submission and try again.'
-      })
+        err:
+          'There is missing or invalid information on the form. Please check your submission and try again.',
+      });
       return;
     }
+
     const linkRef = db.collection('links').doc();
     linkRef
       .set({
         uid: linkRef.id,
-        url: url.split('?')[0], //ignore query params
+        url: sanitizedURL, //ignore query params
         title,
         publisher,
         days,
@@ -50,22 +53,17 @@ export const SubmitLink = () => {
         votes: 0,
         submit: {
           date: new Date(),
-          email: user.email,
-          displayName: user.displayName,
-          userID: user.uid,
+          userID: user.uid, //uid is anonymized. since the links collection will be public do not include names and emails.
         },
         review: {
-          date: '',
-          email: '',
-          displayName: '',
-          userID: '',
+          date: user.roles.review ? new Date() : '',
+          userID: user.roles.review ? user.uid : '',
           approved: user.roles.review ? true : false, //if submitter has review role, automatically approve
         },
       })
       .then(() => {
-        console.log(`link added as ${linkRef.id}`);
         setSubmitMessage({
-          type: 'success'
+          type: 'success',
         });
       })
       .catch((err) => {
@@ -82,32 +80,37 @@ export const SubmitLink = () => {
       <Header as='h1' textAlign='center'>
         Submit New Commentary Link
       </Header>
-      {user && user.roles.submit ? (
+      {user?.roles?.submit ? (
         <Form noValidate autoComplete='off' onSubmit={handleSubmit}>
           <Form.Input
             label='URL'
             type='url'
             name='url'
             value={linkInfo.url}
-            onChange={(e) =>
+            onChange={(e) => {
+              setFormErrors({
+                ...formErrors,
+                url: false,
+                exists: false,
+                urlFormat: false,
+              });
               setLinkInfo({
                 ...linkInfo,
                 url: e.target.value,
-              })
-            }
+              });
+            }}
             placeholder='https://www.example.com'
             pattern='https://.*'
             required
             error={formErrors.url}
           />
           {formErrors.exists && (
-            <Message negative>
-              This link has already been submitted.
-            </Message>
+            <Message negative>This link has already been submitted.</Message>
           )}
           {formErrors.urlFormat && (
             <Message negative>
-              Please be sure your link includes the "https://" or "http://"" at the beginning of the url.
+              Please be sure your link includes the "https://" or "http://"" at
+              the beginning of the url.
             </Message>
           )}
           <Form.Input
@@ -115,12 +118,16 @@ export const SubmitLink = () => {
             type='text'
             name='title'
             value={linkInfo.title}
-            onChange={(e) =>
+            onChange={(e) => {
+              setFormErrors({
+                ...formErrors,
+                title: false,
+              });
               setLinkInfo({
                 ...linkInfo,
                 title: e.target.value,
-              })
-            }
+              });
+            }}
             placeholder='Example Commentary on Romans 8'
             required
             error={formErrors.title}
@@ -130,12 +137,16 @@ export const SubmitLink = () => {
             type='text'
             name='publisher'
             value={linkInfo.publisher}
-            onChange={(e) =>
+            onChange={(e) => {
+              setFormErrors({
+                ...formErrors,
+                publisher: false,
+              });
               setLinkInfo({
                 ...linkInfo,
                 publisher: e.target.value,
-              })
-            }
+              });
+            }}
             placeholder='Examples: Working Preacher, Pulpit Fiction'
             required
             error={formErrors.publisher}
@@ -145,12 +156,16 @@ export const SubmitLink = () => {
             <Dropdown
               name='day'
               value={linkInfo.days}
-              onChange={(e, data) =>
+              onChange={(e, data) => {
+                setFormErrors({
+                  ...formErrors,
+                  days: false,
+                })
                 setLinkInfo({
                   ...linkInfo,
                   days: data.value,
-                })
-              }
+                });
+              }}
               multiple
               selection
               fluid
@@ -181,17 +196,27 @@ export const SubmitLink = () => {
           {submitMessage.type === 'success' && (
             <Message positive>
               <Message.Header>Success</Message.Header>
-              Thanks! Your submission has been received. It will appear in the
-              search results after it is approved by a reviewer. <br/>If you have been granted a reviewer role; it will be immediately available.
+              <p>Thanks! Your submission has been received.</p>
+              {user?.roles?.review ? (
+                <p>
+                  Because you are an approved reviewer, the link is immediately
+                  available.
+                </p>
+              ) : (
+                <p>
+                  Your submission will be available after it is approved by a
+                  reviewer.
+                </p>
+              )}
             </Message>
           )}
           {submitMessage.type === 'error' && (
             <Message negative>
-            <Message.Header>Error</Message.Header>
-            {submitMessage.err}
-          </Message>
+              <Message.Header>Error</Message.Header>
+              {submitMessage.err}
+            </Message>
           )}
-          
+
           <Button color='teal' type='submit'>
             Submit
           </Button>

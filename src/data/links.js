@@ -12,15 +12,11 @@ const links = [
     votes: 1,
     submit: {
       date: new Date(),
-      email: 'joelnwalkley@gmail.com',
-      displayName: 'Joel N. Walkley',
       userID: 'uid',
     },
     review: {
       //empty for not yet reviewed
       date: '',
-      email: '',
-      displayName: '',
       userID: '',
       approved: false, //false while pending approval
       denialReasons: [],
@@ -34,13 +30,9 @@ const links = [
     publisher: 'Working Preacher',
     days: ['Lent2B'],
     texts: ['Gen 17:1-7, 15-16'],
-    dateAdded: new Date(),
-    addedByEmail: 'joelnwalkley@gmail.com',
-    approved: true,
     votes: 27,
     submit: {
       date: new Date(),
-      email: 'joelnwalkley@gmail.com',
       userID: 'uid',
     },
     review: {
@@ -64,19 +56,14 @@ const links = [
       'Ps 22:23-31',
       'Rom 4:13-25',
     ],
-    dateAdded: new Date(),
-    addedByEmail: 'joelnwalkley@gmail.com',
-    approved: true,
     votes: 42,
     submit: {
       date: new Date(),
-      email: 'joelnwalkley@gmail.com',
       userID: 'uid',
     },
     review: {
       //empty for not yet reviewed
       date: '',
-      email: '',
       userID: '',
       approved: false, //false while pending approval
       denialReasons: [],

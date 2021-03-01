@@ -1,9 +1,20 @@
 import {db} from './firebaseInit';
 
+const sanitizeURL = (url) => {
+    const urlNoParams = url.split('?')[0];
+    const urlNoAnchor = urlNoParams.split('#')[0];
+    return urlNoAnchor;
+}
+
+const linkExists = async (url) => {
+    const sanitzedURL = sanitizeURL(url);
+    const query = await db.collection('links').where('url','==',sanitzedURL).limit(1).get();
+    return query.docs.length > 0;
+}
+
 const validateLink = async (linkInfo) => {
     const {url, title, publisher, days = []} = linkInfo;
-    const query = await db.collection('links').where('url','==',url.split('?')[0]).limit(1).get();
-    console.log("query lenght",query.docs.length)
+    
     let errors = {};
     //required fields populated
     if (url === '') {
@@ -25,11 +36,11 @@ const validateLink = async (linkInfo) => {
         errors.urlFormat = true;
     }
     //check if the link exists
-    if (query.docs.length > 0){
+    if (await linkExists(url)){
         errors.url = true;
         errors.exists = true;
     }
     return errors;
 }
 
-export {validateLink};
+export {validateLink, sanitizeURL};
