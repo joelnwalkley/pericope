@@ -3,8 +3,6 @@ import { FirebaseUser } from '../util/firebaseInit';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 
-//import { user } from '../data/user';
-
 const NavBar = () => {
   const user = useContext(FirebaseUser);
   return (

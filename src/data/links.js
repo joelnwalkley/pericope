@@ -2,36 +2,38 @@
 
 const links = [
   {
-    id: '1',
+    uid: '1',
     url:
       'https://www.workingpreacher.org/commentaries/revised-common-lectionary/second-sunday-in-lent-2/commentary-on-mark-831-38-5',
     title: 'Commentary on Mark 8:31-38',
     publisher: 'Working Preacher',
     days: ['Lent2B'],
-    readings: ['Mark 8:31-38'],
+    texts: ['Mark 8:31-38'],
     votes: 1,
     submit: {
       date: new Date(),
       email: 'joelnwalkley@gmail.com',
+      displayName: 'Joel N. Walkley',
       userID: 'uid',
     },
     review: {
       //empty for not yet reviewed
       date: '',
       email: '',
+      displayName: '',
       userID: '',
       approved: false, //false while pending approval
       denialReasons: [],
     },
   },
   {
-    id: '2',
+    uid: '2',
     url:
       'https://www.workingpreacher.org/commentaries/revised-common-lectionary/second-sunday-in-lent-2/commentary-on-genesis-171-7-15-16-5',
     title: 'Commentary on Genesis 17:1-7, 15-16',
     publisher: 'Working Preacher',
     days: ['Lent2B'],
-    readings: ['Gen 17:1-7, 15-16'],
+    texts: ['Gen 17:1-7, 15-16'],
     dateAdded: new Date(),
     addedByEmail: 'joelnwalkley@gmail.com',
     approved: true,
@@ -51,12 +53,12 @@ const links = [
     },
   },
   {
-    id: '3',
+    uid: '3',
     url: 'https://www.pulpitfiction.com/notes/lent2b',
     title: 'Lent 2B',
     publisher: 'Pulpit Fiction Podcast',
     days: ['Lent2B'],
-    readings: [
+    texts: [
       'Gen 17:1-7, 15-16',
       'Mark 8:31-38',
       'Ps 22:23-31',

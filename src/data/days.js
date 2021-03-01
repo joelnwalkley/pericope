@@ -25,7 +25,7 @@ const days = [
     name: 'Epiphany of the Lord',
     id: 'Epiphany',
     texts: ['Isa 60:1-6', 'Ps 72:1-7, 10-14', 'Eph 3:1-12', 'Matt 2:1-12'],
-    years: ['A','B','C'],
+    years: ['A', 'B', 'C'],
     season: 'epiphany',
     color: 'white',
     linkCount: 37,
@@ -57,12 +57,7 @@ const days = [
   {
     name: 'Third Sunday in Lent',
     id: 'Lent3B',
-    texts: [
-      'Ex 20:1-17',
-      'Ps 19',
-      '1 Cor 1:18-25',
-      'John 2:13-22',
-    ],
+    texts: ['Ex 20:1-17', 'Ps 19', '1 Cor 1:18-25', 'John 2:13-22'],
     years: ['B'],
     season: 'lent',
     color: 'purple',
@@ -71,12 +66,7 @@ const days = [
   {
     name: 'Fourth Sunday in Lent',
     id: 'Lent4B',
-    texts: [
-      'Num 21:4-9',
-      'Ps 107:1-3, 17-22',
-      'Eph 2:1-10',
-      'John 3:14-21',
-    ],
+    texts: ['Num 21:4-9', 'Ps 107:1-3, 17-22', 'Eph 2:1-10', 'John 3:14-21'],
     years: ['B'],
     season: 'lent',
     color: 'purple',
@@ -100,11 +90,7 @@ const days = [
   {
     name: 'Liturgy of the Palms',
     id: 'PalmsB',
-    texts: [
-      'Ps 118:1-2, 19-29',
-      'Mark 11:1-11',
-      'John 12:12-16',
-    ],
+    texts: ['Ps 118:1-2, 19-29', 'Mark 11:1-11', 'John 12:12-16'],
     years: ['B'],
     season: 'lent',
     color: 'red',
@@ -117,7 +103,7 @@ const days = [
       'Isa 50:4-9a',
       'Ps 31:9-16',
       'Mark 14:1-15:47',
-      'Mark 15:1-39, (40-47)'
+      'Mark 15:1-39, (40-47)',
     ],
     years: ['B'],
     season: 'lent',
@@ -131,9 +117,9 @@ const days = [
       'Ex 12:1-4, (5-10), 11-14',
       'Ps 116:1-2, 12-19',
       '1 Cor 11:23-26',
-      'John 13:1-17, 31b-35'
+      'John 13:1-17, 31b-35',
     ],
-    years: ['A','B','C'],
+    years: ['A', 'B', 'C'],
     season: 'lent',
     color: 'white',
     linkCount: 19,
@@ -146,9 +132,9 @@ const days = [
       'Ps 22',
       'Heb 10:16-25',
       'Heb 4:14-26, 5:7-9',
-      'John 18:1-19:42'
+      'John 18:1-19:42',
     ],
-    years: ['A','B','C'],
+    years: ['A', 'B', 'C'],
     season: 'holyweek',
     color: 'black',
     linkCount: 21,
@@ -162,7 +148,7 @@ const days = [
       'Ps 118:1-2, 14-24',
       '1 Cor 15:1-11',
       'John 20:1-18',
-      'Mark 16:1-8'
+      'Mark 16:1-8',
     ],
     years: ['B'],
     season: 'easter',
@@ -220,4 +206,28 @@ const days = [
   },
 ];
 
-export { days };
+//create day and text options based on days.
+
+const dayOptions = days.map((day) => ({
+  key: day.id,
+  text: `${day.name} (${day.years})`,
+  value: day.id,
+}));
+
+const allTexts = [];
+days.forEach((day) => {
+  day.texts.forEach((text) => {
+    allTexts.push(text);
+  });
+});
+
+const uniqueTexts = [...new Set(allTexts)];
+uniqueTexts.sort();
+
+const readingOptions = uniqueTexts.map((reading) => ({
+  key: reading,
+  text: reading,
+  value: reading,
+}));
+
+export { days, dayOptions, readingOptions };
