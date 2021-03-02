@@ -7,18 +7,20 @@ import { Button, Icon, Label, Popup } from 'semantic-ui-react';
 export const Votes = ({ voteCount, linkUID }) => {
   const user = useContext(FirebaseUser);
   const [upVoted, setUpVoted] = useState(false);
+  const [userVoteCount, setUserVoteCount] = useState(voteCount);
 
   const handleVote = () => {
-    console.log('CLICK!');
     if (upVoted) {
       db.collection('votes').doc(upVoted).delete();
       setUpVoted(false);
+      setUserVoteCount(userVoteCount-1);
     } else {
       db.collection('votes').add({
         linkUID: linkUID,
         userUID: user.uid,
       });
       setUpVoted(true);
+      setUserVoteCount(userVoteCount+1);
     }
   };
 
@@ -55,7 +57,7 @@ export const Votes = ({ voteCount, linkUID }) => {
                 Votes
               </Button>
               <Label as='a' basic pointing='left'>
-                {voteCount}
+                {userVoteCount}
               </Label>
             </Button>
           }
@@ -68,7 +70,7 @@ export const Votes = ({ voteCount, linkUID }) => {
               Votes
             </Button>
             <Label as='a' basic pointing='left' color={upVoted ? 'teal' : null}>
-              {voteCount}
+              {userVoteCount}
             </Label>
           </Button>
         </>

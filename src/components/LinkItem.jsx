@@ -3,8 +3,10 @@ import { Header, Item, Label } from 'semantic-ui-react';
 import { Votes } from './Votes';
 
 export const LinkItem = ({
-  link: { uid, url, title, publisher, texts, votes },
+  link: { uid, url, title, publisher, texts, votes, submit },
 }) => {
+  var dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const submitDate = submit.date.toDate().toLocaleDateString('en-US', dateOptions);
 
   return (
     <Item>
@@ -22,6 +24,7 @@ export const LinkItem = ({
             <Label key={i}>{text}</Label>
           ))}
         </Item.Extra>
+        <Item.Extra>Submitted on {submitDate}</Item.Extra>
       </Item.Content>
     </Item>
   );
