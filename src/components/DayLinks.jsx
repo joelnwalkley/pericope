@@ -29,8 +29,8 @@ export const DayLinks = () => {
     const linkQuery = db
       .collection('links')
       .where('days', 'array-contains', id)
-      .orderBy('submit.date')
-      .limit(100);
+      .orderBy('votes','desc')
+      .limit(50);
     const queryListener = linkQuery.onSnapshot((querySnapshot) => {
       const links = [];
       querySnapshot.forEach((doc) => {
@@ -57,7 +57,7 @@ export const DayLinks = () => {
         <Grid.Column width={11}>
           <Header as='h2'>
             {thisDay.name}
-            <Header.Subheader>Top 100 Links</Header.Subheader>
+            <Header.Subheader>Top 50 Links</Header.Subheader>
           </Header>
           {isLoading ? (
             <Message icon>
@@ -73,11 +73,11 @@ export const DayLinks = () => {
                 <Header as='h3' floated='left'>
                   Sort by...
                 </Header>
-                <Button icon color='teal' floated='right'>
-                  <Icon name='arrow up' />
+                <Button icon basic floated='right'>
                   Most Recent
                 </Button>
-                <Button basic floated='right'>
+                <Button icon color='teal' floated='right'>
+                <Icon name='arrow down' />
                   Votes
                 </Button>
               </Segment>

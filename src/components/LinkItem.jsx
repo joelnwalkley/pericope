@@ -12,9 +12,8 @@ export const LinkItem = ({
         <Votes voteCount={votes} linkUID={uid}/>
       </Item.Image>
 
-      <Item.Content>
-        <Item.Meta>Link: {uid}</Item.Meta>
-        <Item.Header as='a'>{title}</Item.Header>
+      <Item.Content href={url} target="_blank">
+        <Item.Header>{title}</Item.Header>
         <Item.Description>{publisher}</Item.Description>
         <Item.Meta>{url}</Item.Meta>
         <Item.Extra>
