@@ -79,7 +79,7 @@ export const SignIn = () => {
                   Creating an account allows you to:
                 </Header.Subheader>
               </Header>
-              <Segment divided compact>
+              <Segment compact>
                 <List divided relaxed>
                   <List.Item>
                     <List.Icon
@@ -89,7 +89,7 @@ export const SignIn = () => {
                       color='teal'
                     />
                     <List.Content>
-                      <List.Header as='h3'>Vote on links</List.Header>
+                      <List.Header as='h3'>Upvote Links</List.Header>
                       <List.Description as='a'>
                         Help other preachers find the best resources.
                       </List.Description>

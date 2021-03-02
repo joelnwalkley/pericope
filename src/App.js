@@ -26,7 +26,7 @@ function App() {
         db.collection('users')
           .doc(user.uid)
           .onSnapshot(doc => {
-            const { uid, displayName, email, roles } = doc.data();
+            const { uid, displayName, email, roles } = doc.data() || {};
             setUser({
               uid,
               displayName,
