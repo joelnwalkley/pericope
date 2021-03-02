@@ -7,11 +7,11 @@ export const LinkItem = ({
     <Item>
       <Item.Image as='div'>
         <Button as='div' labelPosition='right'>
-          <Button color='teal'>
+          <Button>
             <Icon name='arrow alternate circle up' />
             Votes
           </Button>
-          <Label as='a' basic color='teal' pointing='left'>
+          <Label as='a' basic pointing='left'>
             {votes}
           </Label>
         </Button>
