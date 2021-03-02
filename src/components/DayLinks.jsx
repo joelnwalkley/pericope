@@ -98,8 +98,8 @@ export const DayLinks = () => {
                 </Button>
               </Segment>
               <Item.Group divided>
-                {links.map((link, i) => (
-                  <LinkItem key={i} link={link} />
+                {links.map((link) => (
+                  <LinkItem key={link.uid} link={link} />
                 ))}
               </Item.Group>
             </Container>
