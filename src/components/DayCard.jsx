@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Card, Icon, Image, Label } from 'semantic-ui-react';
 
-export const DayCard = ({ day: { id, name, years, texts, color = 'teal', linkCount } }) => {
+export const DayCard = ({ day: { id, name, years, texts, color = 'teal' } }) => {
   let basic = false;
   if (color === "white"){
     color = "black";
@@ -27,7 +27,7 @@ export const DayCard = ({ day: { id, name, years, texts, color = 'teal', linkCou
       </Card.Content>
       <Card.Content extra>
         <Icon name='linkify' />
-        {linkCount} Links
+        Links
       </Card.Content>
     </Card>
   );
