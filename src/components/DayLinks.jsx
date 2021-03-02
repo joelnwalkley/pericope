@@ -32,17 +32,19 @@ export const DayLinks = () => {
       .where('days', 'array-contains', id)
       .orderBy(sort, 'desc')
       .limit(50);
-    const queryListener = linkQuery.onSnapshot((querySnapshot) => {
+    const getLinks = async () => {
+      const linkDocs = await linkQuery.get();
       const links = [];
-      querySnapshot.forEach((doc) => {
+      linkDocs.forEach(doc => {
         links.push(doc.data());
       });
       setLinks(links);
       setIsLoading(false);
-    });
-
+    };
+    getLinks();
+    
     return () => {
-      queryListener();
+      //
     };
   }, [id, sort]);
 
