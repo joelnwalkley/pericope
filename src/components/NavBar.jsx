@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { FirebaseUser } from '../util/firebaseInit';
+import { FirebaseUser, auth } from '../util/firebaseInit';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 
@@ -21,11 +21,19 @@ const NavBar = () => {
             </Button>
           </Menu.Item>
         )}
-        <Menu.Item as={Link} to='/signin'>
-          <Button basic color='teal'>
-            Sign Up / Sign In
-          </Button>
-        </Menu.Item>
+        {user ? (
+          <Menu.Item>
+            <Button basic color='teal' onClick={() => auth.signOut()}>
+              Sign Out
+            </Button>
+          </Menu.Item>
+        ) : (
+          <Menu.Item as={Link} to='/signin'>
+            <Button basic color='teal'>
+              Sign Up / Sign In
+            </Button>
+          </Menu.Item>
+        )}
       </Menu.Menu>
     </Menu>
   );
