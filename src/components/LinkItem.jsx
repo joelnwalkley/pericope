@@ -1,4 +1,4 @@
-import { Item, Label } from 'semantic-ui-react';
+import { Header, Item, Label } from 'semantic-ui-react';
 
 import { Votes } from './Votes';
 
@@ -13,8 +13,9 @@ export const LinkItem = ({
       </Item.Image>
 
       <Item.Content href={url} target="_blank">
-        <Item.Header>{title}</Item.Header>
-        <Item.Description>{publisher}</Item.Description>
+        <Header as='h3'>{title}
+        <Header.Subheader>{publisher}</Header.Subheader>
+        </Header>
         <Item.Meta>{url}</Item.Meta>
         <Item.Extra>
           {texts.map((text, i) => (

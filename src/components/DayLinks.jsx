@@ -23,13 +23,14 @@ export const DayLinks = () => {
   const thisDay = days.filter((day) => day.id === id)[0];
   const [links, setLinks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sort, setSort] = useState('votes');
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const linkQuery = db
       .collection('links')
       .where('days', 'array-contains', id)
-      .orderBy('votes','desc')
+      .orderBy(sort, 'desc')
       .limit(50);
     const queryListener = linkQuery.onSnapshot((querySnapshot) => {
       const links = [];
@@ -43,7 +44,7 @@ export const DayLinks = () => {
     return () => {
       queryListener();
     };
-  }, [id]);
+  }, [id, sort]);
 
   return (
     <Container>
@@ -73,11 +74,24 @@ export const DayLinks = () => {
                 <Header as='h3' floated='left'>
                   Sort by...
                 </Header>
-                <Button icon basic floated='right'>
+                <Button
+                  icon
+                  color={sort === 'submit.date' ? 'teal' : null}
+                  basic={sort === 'submit.date' ? null : true}
+                  floated='right'
+                  onClick={() => setSort('submit.date')}
+                >
+                  {sort === 'submit.date' && <Icon name='arrow down' />}
                   Most Recent
                 </Button>
-                <Button icon color='teal' floated='right'>
-                <Icon name='arrow down' />
+                <Button
+                  icon
+                  color={sort === 'votes' ? 'teal' : null}
+                  basic={sort === 'votes' ? null : true}
+                  floated='right'
+                  onClick={() => setSort('votes')}
+                >
+                  {sort === 'votes' && <Icon name='arrow down' />}
                   Votes
                 </Button>
               </Segment>
