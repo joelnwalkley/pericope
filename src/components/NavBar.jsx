@@ -3,7 +3,7 @@ import { FirebaseUser, auth } from '../util/firebaseInit';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 
-const NavBar = () => {
+export const NavBar = () => {
   const user = useContext(FirebaseUser);
   return (
     <Menu stackable secondary size='massive'>
@@ -41,5 +41,3 @@ const NavBar = () => {
     </Menu>
   );
 };
-
-export default NavBar;
