@@ -10,7 +10,6 @@ const days = [
     years: ['B'],
     season: 'advent',
     color: 'blue',
-    linkCount: 12,
   },
   {
     name: 'Second Sunday of Advent',
@@ -19,7 +18,6 @@ const days = [
     years: ['B'],
     season: 'advent',
     color: 'blue',
-    linkCount: 2,
   },
   {
     name: 'Epiphany of the Lord',
@@ -28,7 +26,6 @@ const days = [
     years: ['A', 'B', 'C'],
     season: 'epiphany',
     color: 'white',
-    linkCount: 37,
   },
   {
     name: 'First Sunday in Lent',
@@ -37,7 +34,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'purple',
-    linkCount: 19,
   },
   {
     name: 'Second Sunday in Lent',
@@ -52,7 +48,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'purple',
-    linkCount: 4,
   },
   {
     name: 'Third Sunday in Lent',
@@ -61,7 +56,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'purple',
-    linkCount: 9,
   },
   {
     name: 'Fourth Sunday in Lent',
@@ -70,7 +64,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'purple',
-    linkCount: 12,
   },
   {
     name: 'Fifth Sunday in Lent',
@@ -85,7 +78,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'purple',
-    linkCount: 23,
   },
   {
     name: 'Liturgy of the Palms',
@@ -94,7 +86,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'red',
-    linkCount: 4,
   },
   {
     name: 'Liturgy of the Passion',
@@ -108,7 +99,6 @@ const days = [
     years: ['B'],
     season: 'lent',
     color: 'red',
-    linkCount: 7,
   },
   {
     name: 'Maundy Thursday',
@@ -122,7 +112,6 @@ const days = [
     years: ['A', 'B', 'C'],
     season: 'lent',
     color: 'white',
-    linkCount: 19,
   },
   {
     name: 'Good Friday',
@@ -137,7 +126,6 @@ const days = [
     years: ['A', 'B', 'C'],
     season: 'holyweek',
     color: 'black',
-    linkCount: 21,
   },
   {
     name: 'Resurrection of the Lord - Easter',
@@ -153,7 +141,6 @@ const days = [
     years: ['B'],
     season: 'easter',
     color: 'white',
-    linkCount: 47,
   },
   {
     name: 'Second Sunday of Easter',
@@ -162,7 +149,6 @@ const days = [
     years: ['B'],
     season: 'easter',
     color: 'white',
-    linkCount: 1,
   },
   {
     name: 'Trinity Sunday',
@@ -171,7 +157,6 @@ const days = [
     years: ['B'],
     season: 'ordinary',
     color: 'white',
-    linkCount: 0,
   },
   {
     name: 'Day of Pentecost',
@@ -186,7 +171,6 @@ const days = [
     years: ['B'],
     season: 'pentecost',
     color: 'red',
-    linkCount: 12,
   },
   {
     name: 'Second Sunday after Pentecost',
@@ -202,7 +186,6 @@ const days = [
     years: ['B'],
     season: 'ordinary',
     color: 'green',
-    linkCount: 11,
   },
 ];
 
