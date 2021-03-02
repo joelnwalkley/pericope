@@ -53,12 +53,12 @@ export const SubmitLink = () => {
         votes: 0,
         submit: {
           date: new Date(),
-          userID: user.uid, //uid is anonymized. since the links collection will be public do not include names and emails.
+          userID: user?.uid, //uid is anonymized. since the links collection will be public do not include names and emails.
         },
         review: {
-          date: user.roles.review ? new Date() : '',
-          userID: user.roles.review ? user.uid : '',
-          approved: user.roles.review ? true : false, //if submitter has review role, automatically approve
+          date: user?.roles?.review ? new Date() : '',
+          userID: user?.roles?.review ? user.uid : '',
+          approved: user?.roles?.review ? true : false, //if submitter has review role, automatically approve
         },
       })
       .then(() => {

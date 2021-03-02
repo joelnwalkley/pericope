@@ -13,7 +13,7 @@ const NavBar = () => {
       </Menu.Item>
       <Menu.Item>Revised Common Lectionary</Menu.Item>
       <Menu.Menu position='right'>
-        {user && user.roles.submit && (
+        {user?.roles?.submit && (
           <Menu.Item as={Link} to='/submit'>
             <Button basic color='teal'>
               <Icon name='add circle' color='teal' />

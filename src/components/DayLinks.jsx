@@ -23,14 +23,15 @@ export const DayLinks = () => {
   const thisDay = days.filter((day) => day.id === id)[0];
   const [links, setLinks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sort, setSort] = useState('votes');
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const linkQuery = db
       .collection('links')
       .where('days', 'array-contains', id)
-      .orderBy('submit.date')
-      .limit(100);
+      .orderBy(sort, 'desc')
+      .limit(50);
     const queryListener = linkQuery.onSnapshot((querySnapshot) => {
       const links = [];
       querySnapshot.forEach((doc) => {
@@ -43,7 +44,7 @@ export const DayLinks = () => {
     return () => {
       queryListener();
     };
-  }, [id]);
+  }, [id, sort]);
 
   return (
     <Container>
@@ -57,7 +58,7 @@ export const DayLinks = () => {
         <Grid.Column width={11}>
           <Header as='h2'>
             {thisDay.name}
-            <Header.Subheader>Top 100 Links</Header.Subheader>
+            <Header.Subheader>Top 50 Links</Header.Subheader>
           </Header>
           {isLoading ? (
             <Message icon>
@@ -73,11 +74,24 @@ export const DayLinks = () => {
                 <Header as='h3' floated='left'>
                   Sort by...
                 </Header>
-                <Button icon color='teal' floated='right'>
-                  <Icon name='arrow up' />
+                <Button
+                  icon
+                  color={sort === 'submit.date' ? 'teal' : null}
+                  basic={sort === 'submit.date' ? null : true}
+                  floated='right'
+                  onClick={() => setSort('submit.date')}
+                >
+                  {sort === 'submit.date' && <Icon name='arrow down' />}
                   Most Recent
                 </Button>
-                <Button basic floated='right'>
+                <Button
+                  icon
+                  color={sort === 'votes' ? 'teal' : null}
+                  basic={sort === 'votes' ? null : true}
+                  floated='right'
+                  onClick={() => setSort('votes')}
+                >
+                  {sort === 'votes' && <Icon name='arrow down' />}
                   Votes
                 </Button>
               </Segment>

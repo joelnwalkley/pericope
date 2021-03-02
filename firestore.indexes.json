@@ -10,7 +10,21 @@
         },
         {
           "fieldPath": "submit.date",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "links",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "days",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "votes",
+          "order": "DESCENDING"
         }
       ]
     }
