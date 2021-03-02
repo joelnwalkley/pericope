@@ -64,7 +64,7 @@ export const Votes = ({ voteCount, linkUID }) => {
         <>
           <Button as='div' labelPosition='right' onClick={handleVote}>
             <Button color={upVoted ? 'teal' : null}>
-              {upVoted && <Icon name='arrow alternate circle up' />}
+              <Icon name='arrow alternate circle up' />
               Votes
             </Button>
             <Label as='a' basic pointing='left' color={upVoted ? 'teal' : null}>
