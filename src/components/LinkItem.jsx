@@ -1,23 +1,19 @@
-import { Button, Icon, Item, Label } from 'semantic-ui-react';
+import { Item, Label } from 'semantic-ui-react';
+
+import { Votes } from './Votes';
 
 export const LinkItem = ({
-  link: { url, title, publisher, texts, votes = [] },
+  link: { uid, url, title, publisher, texts, votes },
 }) => {
+
   return (
     <Item>
       <Item.Image as='div'>
-        <Button as='div' labelPosition='right'>
-          <Button>
-            <Icon name='arrow alternate circle up' />
-            Votes
-          </Button>
-          <Label as='a' basic pointing='left'>
-            {votes}
-          </Label>
-        </Button>
+        <Votes voteCount={votes} linkUID={uid}/>
       </Item.Image>
 
       <Item.Content>
+        <Item.Meta>Link: {uid}</Item.Meta>
         <Item.Header as='a'>{title}</Item.Header>
         <Item.Description>{publisher}</Item.Description>
         <Item.Meta>{url}</Item.Meta>
@@ -27,8 +23,6 @@ export const LinkItem = ({
           ))}
         </Item.Extra>
       </Item.Content>
-      {/* To implement reporting
-      <Popup content='Report Link' position='left center' trigger={<Icon name='flag outline'/>}/> */}
     </Item>
   );
 };
