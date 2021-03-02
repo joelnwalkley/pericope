@@ -7,6 +7,7 @@ import { FirebaseUser, auth, db } from '../util/firebaseInit';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import {
   Button,
+  Container,
   Grid,
   Header,
   List,
@@ -61,73 +62,78 @@ export const SignIn = () => {
   return (
     <>
       {user ? (
-        <>
-          <Header as='h2'>Already Signed In</Header>
-          <Header.Subheader>Welcome, {user?.displayName}</Header.Subheader>
+        <Container textAlign='center'>
+          <Header as='h2'>
+            Signed In
+            <Header.Subheader>Welcome, {user?.displayName}</Header.Subheader>
+          </Header>
           <Button onClick={() => auth.signOut()}>Sign Out</Button>
-        </>
+        </Container>
       ) : (
         <>
-        <Grid stackable columns={2}>
-          <Grid.Column>
-          <Header as='h2'>
-            Please Sign In / Create an Account
-            <Header.Subheader>
-              Creating an account allows you to:
-            </Header.Subheader>
-          </Header>
-          <Segment divided compact>
-            <List divided relaxed>
-              <List.Item>
-                <List.Icon
-                  name='check circle outline'
-                  size='big'
-                  verticalAlign='middle'
-                  color='teal'
-                />
-                <List.Content>
-                  <List.Header as='h3'>Vote on links</List.Header>
-                  <List.Description as='a'>
-                    Help other preachers find the best resources.
-                  </List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Icon
-                  name='check circle outline'
-                  size='big'
-                  verticalAlign='middle'
-                  color='teal'
-                />
-                <List.Content>
-                  <List.Header as='h3'>Submit Links</List.Header>
-                  <List.Description as='a'>
-                    Become eligible for invitation to serve as a link submiter/reviewer.
-                  </List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Icon
-                  name='check circle outline'
-                  size='big'
-                  verticalAlign='middle'
-                  color='teal'
-                />
-                <List.Content>
-                  <List.Header as='h3'>Future Features</List.Header>
-                  <List.Description as='a'>
-                    Other features as they are developed.
-                  </List.Description>
-                </List.Content>
-              </List.Item>
-            </List>
-          </Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Header as='h5' textAlign='center' dividing>"Sign in" will create an account if you do not already have one.</Header>
-          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
-          </Grid.Column>
-        </Grid>
+          <Grid stackable columns={2}>
+            <Grid.Column>
+              <Header as='h2'>
+                Please Sign In / Create an Account
+                <Header.Subheader>
+                  Creating an account allows you to:
+                </Header.Subheader>
+              </Header>
+              <Segment divided compact>
+                <List divided relaxed>
+                  <List.Item>
+                    <List.Icon
+                      name='check circle outline'
+                      size='big'
+                      verticalAlign='middle'
+                      color='teal'
+                    />
+                    <List.Content>
+                      <List.Header as='h3'>Vote on links</List.Header>
+                      <List.Description as='a'>
+                        Help other preachers find the best resources.
+                      </List.Description>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon
+                      name='check circle outline'
+                      size='big'
+                      verticalAlign='middle'
+                      color='teal'
+                    />
+                    <List.Content>
+                      <List.Header as='h3'>Submit Links</List.Header>
+                      <List.Description as='a'>
+                        Become eligible for invitation to serve as a link
+                        submiter/reviewer.
+                      </List.Description>
+                    </List.Content>
+                  </List.Item>
+                  <List.Item>
+                    <List.Icon
+                      name='check circle outline'
+                      size='big'
+                      verticalAlign='middle'
+                      color='teal'
+                    />
+                    <List.Content>
+                      <List.Header as='h3'>Future Features</List.Header>
+                      <List.Description as='a'>
+                        Other features as they are developed.
+                      </List.Description>
+                    </List.Content>
+                  </List.Item>
+                </List>
+              </Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Header as='h5' textAlign='center' dividing>
+                "Sign in" will create an account if you do not already have one.
+              </Header>
+              <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+            </Grid.Column>
+          </Grid>
         </>
       )}
     </>
