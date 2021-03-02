@@ -15,6 +15,7 @@ import { Home } from './components/Home';
 import { DayLinks } from './components/DayLinks';
 import { SubmitLink } from './components/SubmitLink';
 import { SignIn } from './components/SignIn';
+import { AboutPage } from './components/AboutPage';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
               <Route path='/day/:id' component={DayLinks} />
               <Route path='/submit' component={SubmitLink} />
               <Route path='/signin' component={SignIn} />
+              <Route path='/about' component={AboutPage}/>
               <Route path='/' component={Home} />
             </Switch>
           </Container>

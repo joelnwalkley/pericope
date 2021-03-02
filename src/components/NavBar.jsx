@@ -13,6 +13,9 @@ const NavBar = () => {
       </Menu.Item>
       <Menu.Item>Revised Common Lectionary</Menu.Item>
       <Menu.Menu position='right'>
+        <Menu.Item as={Link} to='/about'>
+          About
+        </Menu.Item>
         {user?.roles?.submit && (
           <Menu.Item as={Link} to='/submit'>
             <Button basic color='teal'>
