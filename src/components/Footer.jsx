@@ -1,8 +1,10 @@
 import React from 'react';
-import { Button, Grid, Header, Icon } from 'semantic-ui-react';
+import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react';
 
 export const Footer = () => {
   return (
+      <>
+    <Container className='hero'><br/></Container>
     <div className='footer'>
       <Grid verticalAlign='middle' textAlign='center' columns={2}>
         <Grid.Row color='teal'>
@@ -22,5 +24,6 @@ export const Footer = () => {
         </Grid.Row>
       </Grid>
       </div>
+      </>
   );
 };
