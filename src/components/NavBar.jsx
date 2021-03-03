@@ -3,7 +3,7 @@ import { FirebaseUser, auth } from '../util/firebaseInit';
 import { Link } from 'react-router-dom';
 import { Button, Icon, Menu } from 'semantic-ui-react';
 
-const NavBar = () => {
+export const NavBar = () => {
   const user = useContext(FirebaseUser);
   return (
     <Menu stackable secondary size='massive'>
@@ -13,6 +13,9 @@ const NavBar = () => {
       </Menu.Item>
       <Menu.Item>Revised Common Lectionary</Menu.Item>
       <Menu.Menu position='right'>
+        <Menu.Item as={Link} to='/about'>
+          About
+        </Menu.Item>
         {user?.roles?.submit && (
           <Menu.Item as={Link} to='/submit'>
             <Button basic color='teal'>
@@ -38,5 +41,3 @@ const NavBar = () => {
     </Menu>
   );
 };
-
-export default NavBar;

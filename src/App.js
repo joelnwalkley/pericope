@@ -15,7 +15,8 @@ import { Home } from './components/Home';
 import { DayLinks } from './components/DayLinks';
 import { SubmitLink } from './components/SubmitLink';
 import { SignIn } from './components/SignIn';
-import NavBar from './components/NavBar';
+import { AboutPage } from './components/AboutPage';
+import { NavBar } from './components/NavBar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,7 +26,7 @@ function App() {
       if (user) {
         db.collection('users')
           .doc(user.uid)
-          .onSnapshot(doc => {
+          .onSnapshot((doc) => {
             const { uid, displayName, email, roles } = doc.data() || {};
             setUser({
               uid,
@@ -54,6 +55,7 @@ function App() {
               <Route path='/day/:id' component={DayLinks} />
               <Route path='/submit' component={SubmitLink} />
               <Route path='/signin' component={SignIn} />
+              <Route path='/about' component={AboutPage} />
               <Route path='/' component={Home} />
             </Switch>
           </Container>
