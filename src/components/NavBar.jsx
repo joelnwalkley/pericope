@@ -8,8 +8,8 @@ export const NavBar = () => {
   return (
     <Menu stackable secondary size='massive'>
       <Menu.Item as={Link} to='/'>
-        <Icon name='linkify' color='teal' />
-        Sermon Links
+        <Icon name='paragraph' color='teal' />
+        Pericope
       </Menu.Item>
       <Menu.Item>Revised Common Lectionary</Menu.Item>
       <Menu.Menu position='right'>
