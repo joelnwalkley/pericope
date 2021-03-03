@@ -27,6 +27,9 @@ export const DayLinks = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [])
+
+  useEffect(() => {
     const linkQuery = db
       .collection('links')
       .where('days', 'array-contains', id)
