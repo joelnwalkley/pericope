@@ -56,7 +56,7 @@ function App() {
               <Route path='/submit' component={SubmitLink} />
               <Route path='/signin' component={SignIn} />
               <Route path='/about' component={AboutPage} />
-              <Route path='/' component={Home} />
+              <Route path='*' component={Home} />
             </Switch>
           </Container>
         </Router>
