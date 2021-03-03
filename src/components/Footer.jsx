@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react';
+import { Button, Grid, Header, Icon } from 'semantic-ui-react';
 
 export const Footer = () => {
   return (
-    
-      <Grid stackable verticalAlign='middle' textAlign='center' columns={2}>
+    <div className='footer'>
+      <Grid verticalAlign='middle' textAlign='center' columns={2}>
         <Grid.Row color='teal'>
           <Grid.Column floated='left'>
             <Header as='h3'>Sermon Links</Header>
@@ -21,6 +21,6 @@ export const Footer = () => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-    
+      </div>
   );
 };
