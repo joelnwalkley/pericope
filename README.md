@@ -1,4 +1,4 @@
-# Sermon Links
+# Pericope
 A searchable directory of online commentaries related to the Revised Common Lectionary.
 
 ## Developer

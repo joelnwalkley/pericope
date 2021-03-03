@@ -59,8 +59,8 @@ function App() {
               <Route path='*' component={Home} />
             </Switch>
           </Container>
+          <Footer />
         </Router>
-        <Footer />
       </FirebaseUser.Provider>
     </>
   );

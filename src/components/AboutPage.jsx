@@ -6,7 +6,7 @@ export const AboutPage = () => {
     <Container text>
       <Header as='h2'>Goal & Vision</Header>
       <p>
-        Sermon Links strives to be the go-to directory of useful online
+        Pericope strives to be the go-to directory of useful online
         commentaries to help preachers prepare for the worship experience
         through thoughtful study of the texts.
       </p>
@@ -48,10 +48,10 @@ export const AboutPage = () => {
         & skills as a pastor, social worker, and software developer.
       </p>
       <p>
-        Or, who knows, maybe Sermon Links could become a full-time job{' '}
+        Or, who knows, maybe Pericope could become a full-time job{' '}
         <span role='img'>😉</span> if enough people...{' '}
         <a
-          href='https://www.buymeacoffee.com/sermonlinks'
+          href='https://www.buymeacoffee.com/pericope'
           target='_blank'
           rel='noreferrer'
         >
@@ -69,11 +69,11 @@ export const AboutPage = () => {
       <p>You can find this open-source project at github</p>
       <Icon name='github' />
       <a
-        href='https://github.com/joelnwalkley/sermonlinks'
+        href='https://github.com/joelnwalkley/pericope'
         target='_blank'
         rel='noreferrer'
       >
-        https://github.com/joelnwalkley/sermonlinks
+        https://github.com/joelnwalkley/pericope
       </a>
       <Header as='h3'>Link Maintenance</Header>
       <p>
@@ -90,7 +90,7 @@ export const AboutPage = () => {
         <Container textAlign='center'>
           <Button
             color='teal'
-            href='https://www.buymeacoffee.com/sermonlinks'
+            href='https://www.buymeacoffee.com/pericope'
             target='_blank'
             rel='noreferrer'
           >
