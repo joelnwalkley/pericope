@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react';
 
 export const Footer = () => {
@@ -8,8 +9,10 @@ export const Footer = () => {
     <div className='footer'>
       <Grid verticalAlign='middle' textAlign='center' columns={2}>
         <Grid.Row color='teal'>
-          <Grid.Column floated='left'>
-            <Header as='h3'>Pericope</Header>
+          <Grid.Column as={Link} to='/' floated='left'>
+            <Header as='h5'>
+              <Icon name='paragraph'/>
+              Pericope</Header>
           </Grid.Column>
           <Grid.Column floated='right'>
             <Button
