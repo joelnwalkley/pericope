@@ -1,15 +1,26 @@
-import React from 'react'
-import { Container } from 'semantic-ui-react'
+import React from 'react';
+import { Button, Container, Grid, Header, Icon } from 'semantic-ui-react';
 
 export const Footer = () => {
-    return (
-        <>
-        <Container className="hero"><br/></Container>
-        <footer>
-            <Container>
-                Sermon Links, 2021
-            </Container>
-        </footer>
-        </>
-    )
-}
+  return (
+    
+      <Grid stackable verticalAlign='middle' textAlign='center' columns={2}>
+        <Grid.Row color='teal'>
+          <Grid.Column floated='left'>
+            <Header as='h3'>Sermon Links</Header>
+          </Grid.Column>
+          <Grid.Column floated='right'>
+            <Button
+              href='https://www.buymeacoffee.com/sermonlinks'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <Icon color='teal' name='coffee' />
+              Buy Me A Coffee
+            </Button>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    
+  );
+};
