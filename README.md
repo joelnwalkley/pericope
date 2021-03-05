@@ -65,6 +65,9 @@ The top-level ```App.js``` handles Firebase auth including a change-status liste
 See ```functions/index.js```
 Manages the upvote/downvote counter on create/delete document in the votes collection.
 
+#### Styling
+[Semantic React UI](https://react.semantic-ui.com/)
+
 
 ## Runing locally
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
