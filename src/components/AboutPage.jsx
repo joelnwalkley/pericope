@@ -11,16 +11,18 @@ export const AboutPage = () => {
         the texts.
       </p>
       <p>
-        <b>pe·ric·o·pe /pəˈrikəpē/</b><br/>
-        Pericope, form the Greek περικοπή "cutting
-        around", refers to portions of scripture specifically selected for
-        public worship services especially in more liturgical traditions. I have
-        known many folks refer to the sermon preparation groups I've
-        participated in as "pericope study." 
+        <b>pe·ric·o·pe /pəˈrikəpē/</b>
+        <br />
+        Pericope, form the Greek περικοπή "cutting around", refers to portions
+        of scripture specifically selected for public worship services
+        especially in more liturgical traditions. I have known many folks refer
+        to the sermon preparation groups I've participated in as "pericope
+        study."
       </p>
-      <p>It may also share some etymology
-        with the word *paragraph*, which is why I choose the current simple logo: 
-        ¶.</p>
+      <p>
+        It may also share some etymology with the word *paragraph*, which is why
+        I choose the current simple logo: ¶.
+      </p>
       <p>
         Of course, this project stands on the shoulders of giants. It was
         inspired by works like the wonderful{' '}
@@ -40,7 +42,7 @@ export const AboutPage = () => {
         intentionally small. This will help to ensure smooth functionality as
         the directory grows.
       </p>
-      <hr/>
+      <hr />
       <Header as='h2'>About The Developer</Header>
       <p>
         My name is Joel N. Walkley and I am an ordained United Church of Christ
@@ -70,8 +72,8 @@ export const AboutPage = () => {
           "buy me a coffee"
         </a>
         .
-      <hr/>
       </p>
+      <hr />
       <Header as='h2'>Contributing</Header>
       <Header as='h3'>Prayer</Header>
       <p>
@@ -99,7 +101,7 @@ export const AboutPage = () => {
         I anticipate there will be costs associated with this web app including
         hosting and cloud computing.
       </p>
-      <p>
+      
         <Container textAlign='center'>
           <Button
             color='teal'
@@ -111,7 +113,7 @@ export const AboutPage = () => {
             Buy Me A Coffee
           </Button>
         </Container>
-      </p>
+      
       <p>I am also open to speaking with page sponsors.</p>
     </Container>
   );
