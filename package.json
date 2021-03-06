@@ -2,7 +2,16 @@
   "name": "pericope",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://sermonlinks-8a00d.web.app/",
+  "homepage": "https://pericope.app/",
+  "description": "a user-moderated directory of preaching resources for lectionary bible texts.",
+  "author": {
+    "name": "Joel N. Walkley",
+    "email": "joelnwalkley@gmail.com"
+  },
+  "funding": "https://www.buymeacoffee.com/pericope",
+  "bugs": {
+    "url": "https://github.com/joelnwalkley/pericope/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -43,5 +52,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "keywords": ["bible","preach","commentary"]
 }

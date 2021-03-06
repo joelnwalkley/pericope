@@ -7,6 +7,7 @@ import { createContext } from 'react';
 const FirebaseUser = createContext(null);
 
 firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 const db = firebase.firestore();
 const auth = firebase.auth();

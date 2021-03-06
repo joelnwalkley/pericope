@@ -1,4 +1,6 @@
 # Pericope
+Live: [Pericope.app](https://pericope.app/)
+
 A searchable directory of online commentaries regarding the assigned texts for Sundays and holy days in Christian traditions.
 
 **pe·ric·o·pe /pəˈrikəpē/**  

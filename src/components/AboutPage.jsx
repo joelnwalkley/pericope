@@ -6,10 +6,21 @@ export const AboutPage = () => {
     <Container text>
       <Header as='h2'>Goal & Vision</Header>
       <p>
-        Pericope strives to be the go-to directory of useful online
-        commentaries to help preachers prepare for the worship experience
-        through thoughtful study of the texts.
+        Pericope is a searchable directory of online commentaries to help
+        preachers prepare for the worship experience through thoughtful study of
+        the texts.
       </p>
+      <p>
+        <b>pe·ric·o·pe /pəˈrikəpē/</b><br/>
+        Pericope, form the Greek περικοπή "cutting
+        around", refers to portions of scripture specifically selected for
+        public worship services especially in more liturgical traditions. I have
+        known many folks refer to the sermon preparation groups I've
+        participated in as "pericope study." 
+      </p>
+      <p>It may also share some etymology
+        with the word *paragraph*, which is why I choose the current simple logo: 
+        ¶.</p>
       <p>
         Of course, this project stands on the shoulders of giants. It was
         inspired by works like the wonderful{' '}
@@ -20,7 +31,7 @@ export const AboutPage = () => {
       </p>
       <p>
         What sets this project apart is the aspect of community-supported
-        directory maintenance. This includes the team of folks who submit links
+        directory maintenance. This includes a team of folks who submit links
         and "upvotes" on the most helpful links.
       </p>
       <p>
@@ -29,6 +40,7 @@ export const AboutPage = () => {
         intentionally small. This will help to ensure smooth functionality as
         the directory grows.
       </p>
+      <hr/>
       <Header as='h2'>About The Developer</Header>
       <p>
         My name is Joel N. Walkley and I am an ordained United Church of Christ
@@ -58,6 +70,7 @@ export const AboutPage = () => {
           "buy me a coffee"
         </a>
         .
+      <hr/>
       </p>
       <Header as='h2'>Contributing</Header>
       <Header as='h3'>Prayer</Header>
