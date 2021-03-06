@@ -12,6 +12,7 @@ export const NavBar = () => {
         Pericope
       </Menu.Item>
       <Menu.Item>Revised Common Lectionary</Menu.Item>
+      <Menu.Item>Narrative Lectionary</Menu.Item>
       <Menu.Menu position='right'>
         <Menu.Item as={Link} to='/about'>
           About
