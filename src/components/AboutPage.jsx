@@ -20,7 +20,7 @@ export const AboutPage = () => {
         study."
       </p>
       <p>
-        It may also share some etymology with the word *paragraph*, which is why
+        It may also share some etymology with the word <em>paragraph</em>, which is why
         I choose the current simple logo: ¶.
       </p>
       <p>
@@ -38,7 +38,7 @@ export const AboutPage = () => {
       </p>
       <p>
         Currently, the site includes only a few days in The Revised Common
-        Lectionary Year B, and the group of submitters/reviewers is
+        Lectionary Year B and Narrative Lectionary Year 3. The group of submitters/reviewers is
         intentionally small. This will help to ensure smooth functionality as
         the directory grows.
       </p>
