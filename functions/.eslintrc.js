@@ -8,6 +8,9 @@ module.exports = {
     "eslint:recommended",
     "google",
   ],
+  plugins: [
+    "prettier",
+],
   rules: {
     quotes: ["error", "double"],
   },

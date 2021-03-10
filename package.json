@@ -53,5 +53,12 @@
       "last 1 safari version"
     ]
   },
-  "keywords": ["bible","preach","commentary"]
+  "keywords": [
+    "bible",
+    "preach",
+    "commentary"
+  ],
+  "devDependencies": {
+    "eslint": "^7.21.0"
+  }
 }
