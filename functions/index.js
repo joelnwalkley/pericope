@@ -7,6 +7,9 @@ const db = admin.firestore();
 //Express
 const express = require('express');
 const app = express();
+//LOCAL EMULATOR TESTING ONLY
+const cors = require('cors');
+app.use(cors());
 
 const linkPreviewJS = require('link-preview-js');
 
@@ -40,7 +43,7 @@ app.get('/helloworld', (req, res) => {
   res.send('Hello World!');
 });
 
-app.get('/linkinfo', (req, res) => {
+app.post('/linkinfo', (req, res) => {
   const link = req.body.link;
   linkPreviewJS
     .getLinkPreview(link)

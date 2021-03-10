@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { FirebaseUser, db } from '../util/firebaseInit';
+import axios from 'axios';
 
 import {
   Button,
@@ -84,6 +85,18 @@ export const SubmitLink = () => {
     })
   }
 
+  const handleURLBlur = () => {
+    axios.post('http://localhost:5001/sermonlinks-8a00d/us-central1/api1/linkinfo', {
+      link: linkInfo.url,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   const clearForm = () => {
     setLinkInfo({
       url: '',
@@ -119,7 +132,7 @@ export const SubmitLink = () => {
                 url: e.target.value,
               });
             }}
-            onBlur={validateOnBlur}
+            onBlur={handleURLBlur}
             placeholder='https://www.example.com'
             pattern='https://.*'
             required
