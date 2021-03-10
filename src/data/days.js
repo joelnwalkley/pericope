@@ -412,4 +412,13 @@ const readingOptions = uniqueTexts.map((reading) => ({
   value: reading,
 }));
 
-export { days, dayOptions, readingOptions };
+const dayTexts = (selectedDays=[]) => {
+  let allSelectedDaysTexts = [];
+  selectedDays.forEach(selectedDay => {
+    const day = days.filter(day => day.id === selectedDay);
+    allSelectedDaysTexts = [...allSelectedDaysTexts, ...day[0].texts];
+  })
+  return allSelectedDaysTexts;
+}
+
+export { days, dayOptions, readingOptions, dayTexts };

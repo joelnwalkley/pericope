@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { FirebaseUser, db } from '../util/firebaseInit';
+import axios from 'axios';
 
 import {
   Button,
@@ -7,11 +8,16 @@ import {
   Dropdown,
   Form,
   Header,
+  Icon,
   Message,
 } from 'semantic-ui-react';
 
-import { dayOptions, readingOptions } from '../data/days';
-import { validateAllLinkFields, sanitizeURL, validateSingleLinkField } from '../util/validators';
+import { dayOptions, readingOptions, dayTexts } from '../data/days';
+import {
+  validateAllLinkFields,
+  sanitizeURL,
+  validateSingleLinkField,
+} from '../util/validators';
 
 export const SubmitLink = () => {
   const user = useContext(FirebaseUser);
@@ -24,6 +30,7 @@ export const SubmitLink = () => {
   });
   const [formErrors, setFormErrors] = useState({});
   const [submitMessage, setSubmitMessage] = useState({});
+  const [linkInfoLoading, setLinkInfoLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,11 +87,58 @@ export const SubmitLink = () => {
     const submitErrors = await validateSingleLinkField(e, data);
     setFormErrors({
       ...formErrors,
-      ...submitErrors
-    })
+      ...submitErrors,
+    });
+  };
+
+  const handleURLChange = (e) => {
+    const url = e.target.value;
+    setLinkInfoLoading(url === '' ? false : true);
+    setFormErrors({});
+    setSubmitMessage({});
+    setLinkInfo({
+      ...linkInfo,
+      url: url,
+    });
+    if (url !== '') {
+      //add more validation first
+      axios
+        .post(
+          '/api1/linkinfo',
+          {
+            url: url,
+          }
+        )
+        .then(function (response) {
+          const { title, siteName } = response.data;
+          setLinkInfo({
+            ...linkInfo,
+            url: url,
+            title: title,
+            publisher: siteName,
+          });
+          setLinkInfoLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+
+  const handelDayChange = (e, data) => {
+    const texts = dayTexts(data.value);
+    setFormErrors({
+      ...formErrors,
+      days: false,
+    });
+    setLinkInfo({
+      ...linkInfo,
+      days: data.value,
+      texts: texts,
+    });
   }
 
-  const clearForm = () => {
+  const clearForm = (e) => {
     setLinkInfo({
       url: '',
       title: '',
@@ -93,7 +147,10 @@ export const SubmitLink = () => {
       texts: [],
     });
     setFormErrors({});
-  }
+    if (e?.target?.name === 'clear'){
+      setSubmitMessage({});
+    }
+  };
 
   return (
     <Container className='hero'>
@@ -101,30 +158,33 @@ export const SubmitLink = () => {
         Submit New Commentary Link
       </Header>
       {user?.roles?.submit ? (
-        <Form noValidate autoComplete='off' onSubmit={handleSubmit}>
+        <Form name='submitLink' noValidate autoComplete='off' onSubmit={handleSubmit}>
           <Form.Input
-            label='URL'
+            label='URL (Paste From Browser)'
             type='url'
             name='url'
             value={linkInfo.url}
-            onChange={(e) => {
-              setFormErrors({
-                ...formErrors,
-                url: false,
-                exists: false,
-                urlFormat: false,
-              });
-              setLinkInfo({
-                ...linkInfo,
-                url: e.target.value,
-              });
-            }}
-            onBlur={validateOnBlur}
+            onChange={handleURLChange}
             placeholder='https://www.example.com'
             pattern='https://.*'
             required
             error={formErrors.url}
           />
+          {linkInfo.url === '' && (
+            <Message info>
+              Copy and paste a link above, then wait for the fields to load
+              below.
+            </Message>
+          )}
+          {linkInfoLoading && (
+            <Message icon>
+              <Icon name='circle notched' loading />
+              <Message.Content>
+                <Message.Header>Getting Link Info</Message.Header>
+                One moment...
+              </Message.Content>
+            </Message>
+          )}
           {formErrors.exists && (
             <Message negative>This link has already been submitted.</Message>
           )}
@@ -153,6 +213,7 @@ export const SubmitLink = () => {
             placeholder='Example Commentary on Romans 8'
             required
             error={formErrors.title}
+            disabled={linkInfo.url === ''}
           />
           <Form.Input
             label='Publisher'
@@ -173,22 +234,19 @@ export const SubmitLink = () => {
             placeholder='Examples: Working Preacher, Pulpit Fiction'
             required
             error={formErrors.publisher}
+            disabled={linkInfo.url === ''}
           />
-          <Form.Field required error={formErrors.days}>
+          <Form.Field
+            required
+            error={formErrors.days}
+            disabled={linkInfo.url === ''}
+          >
             <label>Liturgical Day</label>
             <Dropdown
+              upward
               name='days'
               value={linkInfo.days}
-              onChange={(e, data) => {
-                setFormErrors({
-                  ...formErrors,
-                  days: false,
-                })
-                setLinkInfo({
-                  ...linkInfo,
-                  days: data.value,
-                });
-              }}
+              onChange={handelDayChange}
               onBlur={validateOnBlur}
               multiple
               selection
@@ -198,8 +256,8 @@ export const SubmitLink = () => {
               options={dayOptions}
             />
           </Form.Field>
-          <Form.Field>
-            <label>Readings (Optional)</label>
+          <Form.Field disabled={linkInfo.url === ''}>
+            <label>Readings will auto-fill. Remove any that do not apply to this link.</label>
             <Dropdown
               name='texts'
               value={linkInfo.texts}
@@ -232,7 +290,9 @@ export const SubmitLink = () => {
                   reviewer.
                 </p>
               )}
-              <p>The form has been cleared. You may continue to add more links.</p>
+              <p>
+                The form has been cleared. You may continue to add more links.
+              </p>
             </Message>
           )}
           {submitMessage.type === 'error' && (
@@ -242,10 +302,10 @@ export const SubmitLink = () => {
             </Message>
           )}
 
-          <Button color='teal' type='submit'>
+          <Button name='submit' color='teal' type='submit' disabled={linkInfo.url === ''}>
             Submit
           </Button>
-          <Button type='button' onClick={clearForm}>
+          <Button name='clear' type='button' onClick={clearForm}>
             Clear Form
           </Button>
         </Form>

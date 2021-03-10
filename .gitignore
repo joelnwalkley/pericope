@@ -23,3 +23,13 @@ yarn-debug.log*
 yarn-error.log*
 src/util/firebaseConfig.js
 firestore.rules
+
+.eslintrc.js
+pubsub-debug.log
+ui-debug.log
+functions/.eslintrc.js
+.gitignore
+functions/database-debug.log
+functions/firestore-debug.log
+functions/.eslintrc.js
+functions/.eslintrc.js
