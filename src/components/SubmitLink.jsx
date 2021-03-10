@@ -104,7 +104,7 @@ export const SubmitLink = () => {
       //add more validation first
       axios
         .post(
-          '/api1/linkinfo',
+          'https://us-central1-sermonlinks-8a00d.cloudfunctions.net/api1/linkinfo',
           {
             url: url,
           }

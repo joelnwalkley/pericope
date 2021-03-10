@@ -7,9 +7,9 @@ const db = admin.firestore();
 //Express
 const express = require('express');
 const app = express();
-//LOCAL EMULATOR TESTING ONLY
-//const cors = require('cors');
-//app.use(cors());
+
+const cors = require('cors');
+app.use(cors());
 
 const linkPreviewJS = require('link-preview-js');
 
