@@ -1,11 +1,14 @@
+//Firebase
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-
 const db = admin.firestore();
 
+//Express
 const express = require('express');
 const app = express();
+
+const linkPreviewJS = require('link-preview-js');
 
 //CLOUD FUNCTIONS (BACKGROUND)
 exports.upVote = functions.firestore
@@ -37,4 +40,16 @@ app.get('/helloworld', (req, res) => {
   res.send('Hello World!');
 });
 
-exports.apiV1 = functions.https.onRequest(app);
+app.get('/linkinfo', (req, res) => {
+  const link = req.body.link;
+  linkPreviewJS
+    .getLinkPreview(link)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch(() => {
+      res.status(400).json({err: 'error'});
+    });
+});
+
+exports.api1 = functions.https.onRequest(app);
