@@ -12,7 +12,7 @@ import {
   Message,
 } from 'semantic-ui-react';
 
-import { dayOptions, readingOptions } from '../data/days';
+import { dayOptions, readingOptions, dayTexts } from '../data/days';
 import {
   validateAllLinkFields,
   sanitizeURL,
@@ -130,6 +130,19 @@ export const SubmitLink = () => {
     }
   };
 
+  const handelDayChange = (e, data) => {
+    const texts = dayTexts(data.value);
+    setFormErrors({
+      ...formErrors,
+      days: false,
+    });
+    setLinkInfo({
+      ...linkInfo,
+      days: data.value,
+      texts: texts,
+    });
+  }
+
   const clearForm = () => {
     setLinkInfo({
       url: '',
@@ -234,16 +247,7 @@ export const SubmitLink = () => {
             <Dropdown
               name='days'
               value={linkInfo.days}
-              onChange={(e, data) => {
-                setFormErrors({
-                  ...formErrors,
-                  days: false,
-                });
-                setLinkInfo({
-                  ...linkInfo,
-                  days: data.value,
-                });
-              }}
+              onChange={handelDayChange}
               onBlur={validateOnBlur}
               multiple
               selection
