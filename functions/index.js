@@ -44,9 +44,10 @@ app.get('/helloworld', (req, res) => {
 });
 
 app.post('/linkinfo', (req, res) => {
-  const link = req.body.link;
+  const url = req.body.url;
+
   linkPreviewJS
-    .getLinkPreview(link)
+    .getLinkPreview(url)
     .then((data) => {
       res.status(200).json(data);
     })
