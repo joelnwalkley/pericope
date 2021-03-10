@@ -94,12 +94,8 @@ export const SubmitLink = () => {
   const handleURLChange = (e) => {
     const url = e.target.value;
     setLinkInfoLoading(url === '' ? false : true);
-    setFormErrors({
-      ...formErrors,
-      url: false,
-      exists: false,
-      urlFormat: false,
-    });
+    setFormErrors({});
+    setSubmitMessage({});
     setLinkInfo({
       ...linkInfo,
       url: url,
@@ -114,7 +110,6 @@ export const SubmitLink = () => {
           }
         )
         .then(function (response) {
-          console.log('response', response);
           const { title, siteName } = response.data;
           setLinkInfo({
             ...linkInfo,
@@ -143,7 +138,7 @@ export const SubmitLink = () => {
     });
   }
 
-  const clearForm = () => {
+  const clearForm = (e) => {
     setLinkInfo({
       url: '',
       title: '',
@@ -152,6 +147,9 @@ export const SubmitLink = () => {
       texts: [],
     });
     setFormErrors({});
+    if (e?.target?.name === 'clear'){
+      setSubmitMessage({});
+    }
   };
 
   return (
@@ -160,9 +158,9 @@ export const SubmitLink = () => {
         Submit New Commentary Link
       </Header>
       {user?.roles?.submit ? (
-        <Form noValidate autoComplete='off' onSubmit={handleSubmit}>
+        <Form name='submitLink' noValidate autoComplete='off' onSubmit={handleSubmit}>
           <Form.Input
-            label='URL (Copy/Paste)'
+            label='URL (Paste From Browser)'
             type='url'
             name='url'
             value={linkInfo.url}
@@ -245,6 +243,7 @@ export const SubmitLink = () => {
           >
             <label>Liturgical Day</label>
             <Dropdown
+              upward
               name='days'
               value={linkInfo.days}
               onChange={handelDayChange}
@@ -258,7 +257,7 @@ export const SubmitLink = () => {
             />
           </Form.Field>
           <Form.Field disabled={linkInfo.url === ''}>
-            <label>Readings (Optional)</label>
+            <label>Readings will auto-fill. Remove any that do not apply to this link.</label>
             <Dropdown
               name='texts'
               value={linkInfo.texts}
@@ -303,10 +302,10 @@ export const SubmitLink = () => {
             </Message>
           )}
 
-          <Button color='teal' type='submit' disabled={linkInfo.url === ''}>
+          <Button name='submit' color='teal' type='submit' disabled={linkInfo.url === ''}>
             Submit
           </Button>
-          <Button type='button' onClick={clearForm}>
+          <Button name='clear' type='button' onClick={clearForm}>
             Clear Form
           </Button>
         </Form>
