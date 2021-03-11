@@ -25,7 +25,7 @@ This app is modeled from [Text Week](textweek.com) which is a static directory s
 
 ### The "FERN" Stack
 - Firestore (Google Firebase) for database
-- Express - planed for "next steps" development
+- Express
 - React
 - Node for Firebase Cloud Functions
 
