@@ -17,14 +17,12 @@ export const NavBar = () => {
         <Menu.Item as={Link} to='/about'>
           About
         </Menu.Item>
-        {user?.roles?.submit && (
-          <Menu.Item as={Link} to='/submit'>
+          <Menu.Item as={Link} to={user ? '/submit' : '/signin'}>
             <Button basic color='teal'>
               <Icon name='add circle' color='teal' />
               Submit Link
             </Button>
           </Menu.Item>
-        )}
         {user ? (
           <Menu.Item>
             <Button basic color='teal' onClick={() => auth.signOut()}>

@@ -313,8 +313,7 @@ export const SubmitLink = () => {
         <Message info>
           <Message.Header>Permission Needed</Message.Header>
           At this time only a limited number of users are permitted to submit
-          new links. Check again later for this feature to be more widely
-          available.
+          new links. <br/>Send an email to <a href='mailto:joelnwalkley@gmail.com'>joelnwalkley@gmail.com</a> to request access to this feature.
         </Message>
       )}
     </Container>
